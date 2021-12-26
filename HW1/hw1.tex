@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage[sans, stdmargin, noindent]{../rajeev}
+
+\begin{document}
+
+\problem
+
+For this problem, we define $H$ to be all members of the species \emph{Homo sapiens} (humans) currently living, $D$ as all members of the species \emph{Canis familiaris} (domesticated dogs) currently living. Let $L\pars{x, y} := $ \emph{$x$ loves $y$}.
+
+\subproblema
+$$
+\forall x \in H,\ \forall y \in D,\ L \pars{x, y}
+$$
+
+\subproblema
+$$
+\forall x \in H,\ \exists y \in D : L \pars{x, y} \lor x \in D
+$$
+
+\subproblema
+Define $z \pars{x} := $ \emph{$x$ is the greatest integer}.
+$$
+\forall x \in \ZZ,\ \lnot z \pars{x}
+$$
+
+\subproblema
+Define $R \pars{x} := $ \emph{$x$ needs rest to be healthy}, $E \pars{x} := $ \emph{$x$ needs excercise to be healthy}, and $D \pars{x} := $ \emph{$x$ needs a good diet to be healthy}.
+
+$$
+\forall x \in H,\ R \pars{x} \land E\pars{x} \land D\pars{x}
+$$
+
+\subproblema
+$$
+\forall x \in \ZZ,\ \exists y \in \ZZ : y > x
+$$
+
+\subproblema
+Define $D \pars{x, y} := $ \emph{$x$ divides $y$}.
+Define $S := \ZZ^+ \setminus \set{1, x} $ as the positive integers without $1$ and $x$.
+
+$$
+\not \exists y \in S : D \pars{x, y}
+$$
+
+\problem
+
+All the definitions from the previous problem carry over as appropriate.
+
+\subproblema
+
+$$
+\exists x \in H : \exists y \in D : \lnot L \pars{x, y}
+$$
+
+
+\subproblema
+
+$$
+\exists x \in H : \forall y \in D, \lnot L \pars{x, y} \land x \not \in D
+$$
+
+\subproblema
+
+$$
+\exists x \in \ZZ : z \pars{x}
+$$
+
+\subproblema
+
+$$
+\exists x \in H : \lnot R \pars{x} \lor \lnot E \pars{x} \lor \lnot D \pars{x}
+$$
+
+\subproblema
+
+$$
+\exists x \in \ZZ : \forall y \in \ZZ,\ y \leq x
+$$
+
+\subproblema
+
+$$
+\exists y \in S : \lnot D \pars{x, y}
+$$
+
+
+\problem
+
+\subproblemat{Consistency}
+
+\begin{align*}
+  \pars{p \lor \lnot p} & \iff T \\
+  \lnot \pars{p \lor \lnot p} & \iff \lnot T \\
+  \lnot p \land p & \iff F \\
+\end{align*}
+
+\subproblemat{Absorption}
+
+\begin{align*}
+  \pars{p \land \pars{p \lor q}} & \iff \pars{\pars{p \land p} \lor \pars{p \land q}} \\
+                                 & \iff \pars{p \lor \pars{p \land q}}
+\end{align*}
+
+\subproblemat{Contrapositive}
+
+\begin{align*}
+  \pars{p \Rightarrow q} & \iff \pars{\lnot p \lor q} \\
+                         & \iff \pars{q \lor \lnot p} \\
+                         & \iff \pars{\lnot \pars{\lnot q} \lor \lnot p } \\
+                         & \iff \pars{\lnot q \Rightarrow \lnot p} \\
+\end{align*}
+
+
+\problem
+
+$$
+P \ovee Q \equiv \pars{P \lor Q} \land \pars{\lnot \pars{P \land Q}}
+$$
+
+Intuitively, this makes sense, because it explicitly checks that one of $P$ or $Q$ are true, but also explicitly checks that both aren't true.
+
+\problem
+
+\subproblema
+
+For all $x$ in the set of real numbers, there exists a $y$ in the set of real numbers such that $x$ and $y$ sum to $0$.
+
+This is true because for each $x \in \RR$, there's a $-x$, which is its additive inverse, and by definition, the two sum to 0.
+
+\subproblema
+
+There exists an $x$ in the set of real numbers such that for all $y$ in the set of real numbers $x$ and $y$ sum to $0$.
+
+This is false, because not every real number is the additive inverse to $x$.
+
+\problem
+
+The key issue here is that we need to specify that \textbf{exactly one} element of $X$ satisfies $P\pars{x}$, so we say that there's exists an element in the set that satisfies $P\pars{x}$ and if another value satisfies $P\pars{x}$ then it is equal to the original value.
+
+$$
+\exists ! x \in X : P\pars{x} \equiv \exists x \in X : \pars{P\pars{x} \land \forall y \in X, \pars{P\pars{y} \Rightarrow \pars{y=x}}}
+$$
+
+\end{document}

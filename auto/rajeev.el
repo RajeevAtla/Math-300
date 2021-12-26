@@ -1,0 +1,63 @@
+(TeX-add-style-hook
+ "rajeev"
+ (lambda ()
+   (TeX-add-to-alist 'LaTeX-provided-package-options
+                     '(("inputenc" "utf8") ("xcolor" "dvipsnames") ("tcolorbox" "many")))
+   (add-to-list 'LaTeX-verbatim-environments-local "lstlisting")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "lstinline")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "lstinline")
+   (TeX-run-style-hooks
+    "geometry"
+    "mathtools"
+    "inputenc"
+    "xcolor"
+    "titlesec"
+    "amsfonts"
+    "amssymb"
+    "amsthm"
+    "lastpage"
+    "fancyhdr"
+    "tcolorbox"
+    "mathabx"
+    "stmaryrd"
+    "hyperref")
+   (TeX-add-symbols
+    '("bm" 1)
+    '("subproblemat" 1)
+    '("subproblemnt" 1)
+    '("recitation" 1)
+    '("lecture" 1)
+    '("norm" 1)
+    '("vect" 1)
+    '("set" 1)
+    '("brak" 1)
+    '("pars" 1)
+    '("abs" 1)
+    '("E" 1)
+    "CC"
+    "FF"
+    "NN"
+    "QQ"
+    "RR"
+    "RRN"
+    "RRM"
+    "ZZ"
+    "Real"
+    "Img"
+    "problem"
+    "subproblemn"
+    "subproblema")
+   (LaTeX-add-counters
+    "lecture"
+    "recitation"
+    "problem"
+    "subproblemn"
+    "subproblema")
+   (LaTeX-add-tcolorbox-newtcolorboxes
+    '("definition" "2" "[" "")
+    '("theorem" "2" "[" "")
+    '("lemma" "2" "[" "")
+    '("example" "" "" "")
+    '("remark" "" "" "")))
+ :latex)
+
