@@ -105,12 +105,6 @@
 \newcommand{\recitation}[1]{\refstepcounter{recitation}\newpage\section{Recitation \therecitation : #1}}
 
 % for homework
-\newcounter{problem}
-\newcommand{\problem}{
-  \refstepcounter{problem}
-  %\addcontentsline{toc}{section}{Problem \theproblem}
-  \section*{\color{red}$\mathcal{P}$\theproblem}
-}
 
 % key
 % a = alphabetic
@@ -118,6 +112,18 @@
 % t = title
 
 % TODO: add these to TOC to make indexing easier
+
+
+\newcounter{problem}
+\newcommand{\problem}{
+  \refstepcounter{problem}
+  %\addcontentsline{toc}{section}{Problem \theproblem}
+  \section*{\color{red}$\mathcal{P}$\theproblem}
+}
+\newcommand{\problemt}[1]{
+  \refstepcounter{problem}
+  \section*{\textcolor{red}{$\mathcal{P}$\theproblem}\hspace{0.5em}#1}
+}
 
 \newcounter{subproblemn}
 \counterwithin{subproblemn}{problem}

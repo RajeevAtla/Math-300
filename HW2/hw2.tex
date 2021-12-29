@@ -5,5 +5,114 @@
 
 \problem
 
+\subproblemat{$\bigcup \limits_{x \in \ZZ} \set{x, x + 1, x + 2}$}
+The resultant set will be $\ZZ$ because of the range of the indexing set, which is also $\ZZ$.
+
+\subproblemat{$\bigcup \limits_{n \in \NN} \pars{-n, n}$}
+As $n$ approaches infinity, the interval described also expands to infinity.
+The union of all of these intervals is therefore $\RR$.
+
+\subproblemat{$\bigcap \limits_{n \in \NN} \pars{-n, n}$}
+As $n$ increases, the width of each interval also increases, but all of them are centered at $0$.
+The smallest interval is the original interval: $\pars{-1, 1}$.
+
+\subproblemat{$\bigcup \limits_{n = 2}^\infty [0, 1 - 1/n)$}
+As the value of $n$ increases, the right endpoint gets closer and closer to 1, but never reaches.
+Indeed,
+
+$$
+\lim_{n \to \infty} \pars{1 - \frac{1}{n}} = 1
+$$
+
+This means that the union of all of these intervals also won't include $1$.
+The answer is therefore $ \left [0, 1 \right)$.
+
+\subproblemat{$\bigcup \limits_{x \in \mathbb{Z}} \pars{ \bigcup \limits_{n = 2} ^\infty \left [x, x + 1 - 1/n \right)}$}
+Using the results of the last subproblem, the inner union is $\left [x, x + 1 \right)$.
+The outer union then takes this interval and repeats it across all integers $x$.
+This gives $\RR$ as the result.
+
+\problem{}
+\subproblemat{$\pars{\bigcup \limits_{x \in \ZZ} \set{x, x + 1, x + 2}}^C$}
+Taking the complement results in removing the integers from the reals, or in shorter form, $\RR \setminus \ZZ$.
+
+\subproblemat{$\pars{\bigcup \limits_{n \in \NN} \pars{-n, n}}^C$}
+The complement of $\RR$ with respect to $\RR$ is the empty set, $\set{}$.
+
+\subproblemat{$\pars{\bigcup \limits_{n = 2}^\infty [0, 1 - 1/n)}^C$}
+The complement is the result of simply removing $\left [ 0, 1 \right )$ from the reals.
+Doing so yields $pars{-\infty, 0} \cup \left [ 1, \infty \right )$.
+
+\subproblemat{$\pars{\bigcup \limits_{x \in \mathbb{Z}} \pars{ \bigcup \limits_{n = 2} ^\infty \left [x, x + 1 - 1/n \right)}}^C$}
+The complement of the reals is just the empty set, $\set{}$.
+
+\problem
+
+\subproblemat{$\abs{A \times B} = \abs{A} \cdot \abs{B}$}
+We can use the $A$ as the outer indexing collection and $B$ as the inner indexing collection.
+To carry out the cartesian product, we traverse through the entirety of $B$ $\abs{A}$ times.
+This results in a set with cardinality $\abs{A} \cdot \abs{B}$.
+
+
+\subproblemat{$\abs{\mathcal{P} \pars{\mathcal{P} \pars{\mathcal{P} \pars{\mathcal{P}  \pars{\varnothing}}}} }$}
+We won't take each powerset function, since that would be very cumbersome.
+The initial set is the empty set, therefore it has 0 elements.
+For an initial set with cardinality $n$, the powerset produces a set with cardinality $2^n$.
+This makes sense because for each element, there are two choices: include them in the subset or don't.
+We can then compute,
+
+\begin{align*}
+  \abs{\mathcal{P \pars{\varnothing}}} &= 1 \\
+  \abs{\mathcal{P} \pars{\mathcal{P} \pars{\varnothing}} } &= 2 \\
+  \abs{\mathcal{P} \pars{\mathcal{P} \pars{\mathcal{P} \pars{\varnothing}}}} &= 4 \\
+  \abs{\mathcal{P} \pars{\mathcal{P} \pars{\mathcal{P} \pars{\mathcal{P} \pars{\varnothing}}}}} &= 16 \\
+\end{align*}
+
+In general, define $\mathcal{P}_n \pars{\varnothing}$ as the set produced by applying the powerset $n$ times to the empty set.
+We see that $\abs{\mathcal{P}_n \pars{\varnothing}} = 2^{\abs{\mathcal{P}_{n-1} \pars{\varnothing}}}$.
+
+
+\problem
+
+\subproblemat{$\pars{A \setminus B} \subseteq A$}
+Define $C := A \setminus B$.
+We wish to prove that $C \subseteq A$.
+By definition, $C$ is made up of all the elements of $A$ that don't appear in $B$.
+Therefore all the elements of $C$ will be in $A$, proving that it is a subset.
+
+
+\subproblemat{$\pars{A\cup B}^C = A^C \cap B^C$}
+Define an arbitrary member $x$ such that $x \in \pars{A\cup B}^C$.
+By definition, $\pars{x \not \in A} \land \pars{x \not \in B}$.
+Therefore, by the definition of the complement of a set, $\pars{x \in A^C} \land \pars{x \in B^C}$.
+Since this works for an arbitrary $x$, $\pars{A\cup B}^C \subseteq A^C \cap B^C$.
+
+Similarly, define an arbitrary member $y$ such that $y \in A^C \cap B^C$.
+Therefore, by the definition of the intersection, $\pars{y \in A^C} \land \pars{y \in B^C}$.
+By the definition of the complement $\pars{y \not \in A} \land \pars{y \not \in B}$.
+We can replace the conjunction operator with a set union using the definition of a union to write $y \not \in \pars{A \cup B}$.
+Using the definition of a complement again, $y \in \pars{A \cup B}^C$.
+Since this works for an arbitrary $y$, $A^C \cap B^C \subseteq \pars{A\cup B}^C$.
+
+Putting these two arguments together shows that $\pars{A\cup B}^C = A^C \cap B^C$.
+
+
+\problemt{$A\triangle B=(A\cup B)\setminus (A\cap B)$}
+Since we are already given a definition of the symmetric difference, it is sufficient to prove
+
+$$
+\pars{A \setminus B} \cup \pars{B \setminus A} = \pars{A \cup B} \setminus \pars{A \cap B}
+$$
+
+The symmetric difference only retains elements in $A$ and $B$ that are unique to them, relative to each other.
+
+Consider an element $x$ that is an arbitrary member of $A\triangle B$.
+That element, by definition is a member of exactly one set.
+If it is only a member of one set, then it is not in the intersection of the two sets.
+And is therefore also a member of $\pars{A \cup B} \setminus \pars{A \cap B}$.
+Therefore, $A\triangle B \subseteq \pars{A \cup B} \setminus \pars{A \cap B}$.
+We can repeat the same exact argument for a member of $\pars{A \cup B} \setminus \pars{A \cap B}$ to see that $A \triangle B \subseteq \pars{A \cup B} \setminus \pars{A \cap B}$.
+Therefore, $\pars{A \setminus B} \cup \pars{B \setminus A} = \pars{A \cup B} \setminus \pars{A \cap B}$.
+
 
 \end{document}
