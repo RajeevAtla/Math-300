@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage[sans, stdmargin, noindent]{../rajeev}
+
+\begin{document}
+
+\problem
+
+\subproblemat{$\forall x \in \RR, \pars{x^2 < 73 \Rightarrow 0 < 1}$}
+
+Since $0$ is always less than $1$, we are done by trivial proof.
+
+\subproblemat{$\forall x \in \ZZ, \pars{-x^2 > 0 \Rightarrow x = 5}$}
+
+Multiplying both sides of the inequality and flipping the direction of the sign yields $x^2 < 0$.
+This is never true for any real $x$., so we are done by vacuous proof.
+
+\problem{}
+
+\subproblemat{$x \equiv 1 \pmod{2} \Rightarrow 7x - 5 \equiv 0 \pmod{2}$}
+Since $x$ is odd, it can be written as $x = 2k+1$ for some $k \in \ZZ$.
+Substituting,
+\begin{align*}
+  7x - 5 &= 7 \pars{2k+1} - 5 \\
+         &= 14k + 2 \\
+         &= 2 \pars{7k + 1}
+\end{align*}
+A number is even if it can be written in the form $2k'$ for some $k' \in \ZZ$.
+This is true for $7x-5$ if $x$ is odd and $k' = 7k+1$.
+
+\subproblemat{$a, c \equiv 1 \pmod{2} \Rightarrow ab+bc \equiv 0 \pmod{2}$}
+We can factor the expression into $\pars{a+c}b$.
+Since $a$ and $c$ are odd, we can write them as $a = 2k+1, b = 2k' + 1$ for $k, k' \in \ZZ$.
+Substituting and simplifying, we get $b\pars{2k + 2k' + 2} = 2b \pars{k + k' + 1}$.
+Defining $k'' := b \pars{k + k' + 1}$, we see that the entire expression can be written as $2k''$, proving the quantity to be even.
+
+
+\subproblemat{$\exists x, y \in \ZZ : \forall k \in \ZZ, 2k+1 = x^2 - y^2 $}
+We prove this for an arbitrary odd number $k$.
+Since $k$ is odd, we can write $k = 2x+1$ for some $x \in \ZZ$.
+Fix $y$ such that $y = x+1$.
+We have
+
+\begin{align*}
+  y^2 - x^2 &= \pars{y-x} \pars{y+x} \\
+            &= \pars{2x+1} \\
+            &= k \\
+\end{align*}
+
+\problem
+\subproblemat{$x \equiv 1 \pmod{2} \iff x^3 \equiv 1 \pmod{2}$}
+
+We first prove that if $x$ is odd then $x^3$ is odd.
+If $x$ is odd then we can write it as $2k+1$ for some $k \in \ZZ$.
+We have
+\begin{align*}
+  x^3 &= \pars{2k+1}^3 \\
+      &= 8k^3 + 12k^2 + 6k + 1 \\
+      &= 2 \pars{4k^3 + 6k^2 + 3k} + 1\\
+\end{align*}
+We see that $x^3 = 2k' + 1$ for $k' = 4k^3 + 6k^2 + 3k$, making it even.
+
+We then prove that if $x^3$ is odd then $x$ is odd.
+Seeing this to be cumbersome, we prove the contrapositive: if $x$ is even then $x^3$ is even.
+If $x$ is even, then $x = 2n$ for some $n \in \ZZ$.
+Then $x^3 = 8n^3 = 2 \pars{4n^3}$.
+We see that $x^3$ can be written in the form of $2 n'$, where $n = 4n^3$, making it even.
+Using the contrapositive statement, which we have proven to be true, we can then see that if $x^3$ is odd then $x$ is also odd.
+
+Putting these two arguments together, we see that $x$ is odd if and only if $x^3$ is odd. 
+
+
+
+\subproblemat{$4 \divides x^2 \Rightarrow x \equiv 1 \pmod{2}$}
+We prove the contrapositive: if $x$ is even then $4$ divides $x^2$.
+If $x$ is even it can be written as $x = 2k$ for some $k' \in \ZZ$.
+Then $x^2 = 4k'^2$.
+Since $x^2$ can be written as $x^2 = 4k$ for $k = k'^2$, $4$ divides $x^2$.
+
+\problem{}
+
+\subproblemat{No Largest Integer}
+We proceed by contradiction.
+Suppose that there is an $x \in \ZZ$ that is the largest integer.
+However, the integers are closed under addition, so there exists a $y = x+1$ for all $x$.
+Moreover, $y > x$, so $x$ isn't the largest integer, forming a contradiction.
+
+\subproblemat{No Smallest Positive Rational}
+We proceed by contradiction.
+Suppose $x \in \QQ$ is the smallest rational number.
+Since $x$ is rational, it can be written as $\frac{p}{q}$ for $p, q \in \ZZ$.
+Conside the rational number $y := \frac{x}{2} = \frac{p}{2q}$. Clearly $y < x$, forming a contradiction.
+
+\subproblemat{Product of Two Irrationals is Irrational}
+We proceed by contradiction.
+Assume that the product of two irrational numbers is irrational.
+Consider the irrational numbers $x := \pi$ and $y := \frac{1}{\pi}$.
+Their product $xy$ is $1$, which is a rational number, forming a contradiction.
+
+\subproblemat{Sum of Rational and Irrational is Irrational}
+We proceed by contradiction.
+Assume that the sum of a rational number and an irrational number is rational.
+Choose $x \in \RR\setminus\QQ, y \in \QQ$.
+Define $z := x + y \in \QQ$.
+Since $y$ and $z$ are rational, we can write them as $x = \frac{p_x}{q_x}, z = \frac{p_z}{q_z}$ for some $p_x, q_x, p_z, q_z \in \ZZ$.
+We have
+\begin{align*}
+  z &= x + y \\
+  x &= z - y \\
+    &= \frac{p_z}{q_z} - \frac{p_x}{q_x} \\
+    &= \frac{p_z q_x - p_x q_z}{q_z q_x} \\
+    &= \frac{p'}{q'}
+\end{align*}
+This implies that $x$ is a rational number, since it can be written in the form of $\frac{p'}{q'}$, where $p', q' \in \ZZ$.
+This is a contradiction, so the sum must then be irrational.
+
+\problem{}
+
+Note: we define the absolute value $|x|$ as follows:
+
+$$
+\abs{x} = 
+\begin{cases}
+  x, & x \geq 0 \\
+  -x, & x < 0
+\end{cases}
+$$
+
+
+\subproblemat{Triangle Inequality}
+
+Using the definition of absolute value (defined above), we have
+
+\begin{align*}
+  -\abs{x} \leq &x \leq \abs{x} \\
+  -\abs{y} \leq &y \leq \abs{y}
+\end{align*}
+Adding these inequalities up, we have
+\begin{align*}
+  -\pars{\abs{x} + \abs{y}} \leq x & + y \leq \pars{\abs{x} + \abs{y}} \\
+  \abs{x + y} &\leq \abs{x} + \abs{y}
+\end{align*}
+
+
+\subproblemat{Reverse Triangle Inequality}
+We use the substitution and then use the triangle inequality.
+\begin{align*}
+  \abs{\abs{x} - \abs{y}} &= \abs{\abs{x - y + y} - \abs{y} } \\
+                          &\leq \abs{\abs{x -y} + \abs{y} - \abs{y}} \\
+                          &= \abs{\abs{x-y}} \\
+                          &= \abs{x-y}
+\end{align*}
+
+
+\end{document}
