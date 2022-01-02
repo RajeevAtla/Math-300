@@ -1,0 +1,241 @@
+\documentclass{article}
+\usepackage[sans, stdmargin, noindent]{../rajeev}
+
+\begin{document}
+
+\problem{}
+Using induction, prove that \[\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}.\]
+\hrule
+
+We proceed using induction.
+We first show that this holds true for $n=2$.
+
+\begin{align*}
+  \sum \limits_{k=1}^{k=2} k^2 &= 1^2 + 2^2 \\
+                               &= 1 + 4 \\
+                               &= 5 \\
+  \frac{n \pars{n+1} \pars{2n+1}}{6} &= \frac{2 \pars{3} \pars{5}}{6} \\
+                               &= 5 \\
+\end{align*}
+
+We then show that this holds for $n+1$ assuming that it holds for $n$.
+
+\begin{align*}
+  \sum \limits_{k=1}^{n+1} k^2 &= \pars{n+1}^2 + \sum \limits_{k=1}^{n} k^2 \\
+                               &= \pars{n+1}^2 + \frac{n \pars{n+1} \pars{2n+1}}{6} \\
+                               &= \pars{n+1} \pars{n+1 + \frac{n \pars{2n+1}}{6}} \\
+                               &= \pars{n+1} \pars{\frac{n^2}{3} + \frac{7n}{6} + 1} \\
+                               &= \frac{1}{6} \pars{n+1} \pars{2n^2 + 7n + 6} \\
+                               &= \frac{1}{6} \pars{n+1} \pars{2n+3} \pars{n+2} \\
+                               &= \frac{1}{6} \pars{n+1} \pars{2 \pars{n+1} + 1} \pars{\pars{n+1} + 1}
+\end{align*}
+
+\problem
+Using induction, show that for all $n \in \NN$, $8$ divides $5^{2n} - 1$
+\hrule
+We proceed using induction.
+We first show that this holds for $n=1$.
+$$5^2 - 1 = 24$$
+This is divisible by $8$.
+
+We then assume that this holds true for $n$ and proceed to show that it holds true for $n+1$.
+Using some clever algebraic manipulation, we can write the expression for $n+1$ as
+\begin{align*}
+  5^{2 \pars{n+1}} - 1 &= 25 \cdot 5^{2n} - 1 \\
+                       &= 25 \pars{5^{2n} - 1} + 25 \pars{1} - 1 \\
+                       &= 25 \pars{5^{2n} - 1} + \pars{5^2 - 1} \\
+\end{align*}
+
+Both terms of the expression are divisible by 8, so the whole expression must also be divisible by 8, using Euclidean division.
+
+\problem{}
+Suppose there are $n$ people in a room.
+Everyone in the room is very friendly, as it happens, and each person wants to shake every other person's hand.
+Show that there are $\frac{n^2-n}{2}$ handshakes that will occur.
+(For example, for $n=2$, there will be one handshake that occurs between the two people).
+\hrule
+
+We proceed using induction.
+We first show that this holds for $n=3$.
+The first person shakes hands with the second and third.
+The second person shakes hands with the third.
+That is a total of $3$ handshakes, which is consistent with the formula: $\frac{3^2 - 3}{2} = 3$.
+
+We then assume that this formula holds for $n$ people and consider what happens when it is applied to $n+1$ people.
+This is analogous to adding one extra person into the mix of people who need to shake hands.
+This person only needs to shake everyone else's hands once, adding $n$ handshakes.
+The result is then
+\begin{align*}
+  n + \frac{n \pars{n-1}}{2} &= n + \frac{n^2 - n}{2} \\
+                             &= \frac{n^2 + n}{2} \\
+                             &= \frac{\pars{n+1} \pars{n}}{2} \\
+                             &= \frac{\pars{n+1} \pars{\pars{n+1}-1}}{2}
+\end{align*}
+
+\problem
+\textbf{(Towers of Hanoi).} Consider the following figure, where we have three rods, and 5 disks stacked on top of each other on the leftmost rod, and the largest disk is on the bottom, and the smallest is on top.
+The objective of the puzzle is to move all the disks to the rightmost rod, while observing the following three rules:
+\begin{itemize}
+\item Only one disk may be moved at a time. 
+\item A ``move" is taking the topmost disk from one of the rods and moving it to a different rod.
+\item A larger disk may not be placed on a smaller disk. 
+\end{itemize}
+Now consider the same game with $n$ disks instead of 5. Show, using induction, that the puzzle may be solved in $2^n-1$ moves.
+\hrule
+
+We proceed using induction.
+Consider the case when $n=1$.
+Then, $2^1 - 1 = 1$, so this works, as only one step is needed to move one disk to the rightmost rod.
+
+We then assume this works for $n$ disks and consider what happens with $n+1$ disks.
+Let the $n+1$th disk be the bottom-most disk in the original stack.
+It takes $2^n - 1$ steps to move the top $n$ disks to the middle stack.
+We then move the $k+1$ disk to another stack with $1$ additional move.
+Finally, combining all the existing stacks together takes another $2^n - 1$ steps.
+This adds up to
+
+\begin{align*}
+  \pars{2^n - 1} + \pars{1} + \pars{2^n - 1} &= 2 \cdot 2^n - 1 \\
+                                             &= 2^{n+1} - 1
+\end{align*}
+
+\problem
+Show that for any convex polygon with $n$ vertices, the sum of interior angles is $\pars{n-2}\pi$. A convex polygon is a polygon where for any two points in the interior, the line segment that joins them is contained within the polygon. However, you may use the easier definition, which is that a polygon is convex when all interior angles are less than $\pi$.
+\hrule
+
+As a preliminary, a convex polygon that has $n$ vertices will have $n$ sides.
+
+We proceed using induction.
+For a triangle, it is well known that the sum of the interior angles is $\pi$, showing that the statement is true for $n=3$.
+
+We then assume the statement holds for $n$ vertices, and show that it holds for $n+1$ vertices.
+Consider an arbitrary $n+1$-sided convex polygon.
+This shape can be decomposed into a triangle and a $n$-sided convex polygon by drawing a line through two distinct vertices that share a common adjacent vertex.
+This decomposition is valid because the line drawn will lie completely in the polygon in a convex polygon, by definition.
+Then its interior angles will be the sum of those of the triangle and the $n$-sided polygon, or
+\begin{align*}
+  \pi + \pars{n-2} \pi &= \pars{n-1} \pi \\
+                       &= \pars{\pars{n+1}-2} \pi \\
+\end{align*}
+
+\problem{}
+
+The Computer Science department considers induction the most important part of Math 300 (even though it \textit{definitely} is not), and the reason why this is the case is that induction provides a way to prove that an algorithm is correct.
+Consider the following \texttt{Adamsort} algorithm, which takes an array of length $n$ as input and outputs an array which contains the same elements, but sorted.
+\begin{algorithm}\caption{Adamsort}\begin{algorithmic}
+    \Require $A$ an array of length $n\ge 0$
+    \Ensure $A$ is sorted at the end. That is, $i<j$, then $A[i]\le A[j]$.
+    \For{$1\le i\le \binom{n}{2}$} 
+    \If {there exist $j<k$ such that $A[j]>A[k]$} 
+    \State Swap $A[j]$ and $A[k]$
+    \Else \State Break 
+    \EndIf
+    \EndFor
+    
+  \end{algorithmic}\end{algorithm}
+    
+Prove using induction that this algorithm converges to a sorted list.
+\hrule
+We proceed using induction.
+Consider the case when $n=2$ with an array $\brak{a_0, a_1}$ with arbitrary elements.
+There are two cases:
+\begin{enumerate}
+\item If $a_0 \leq a_1$, then the array is already sorted, so the algorithm does nothing.
+\item If $a_0 > a_1$, then $a_0$ and $a_1$ are swapped, making the array sorted.
+\end{enumerate}
+Therefore, no matter the values of the array values, the algorithm works for $n=2$.
+
+We then assume the algorithm works for $n$ and prove that it works for $n+1$.
+Consider an array of length $n+1$.
+We then place aside the last element, $a_n$ and only consider the first $n$ elements, which we can use Adamsort to convert into a sorted array.
+We are then left with a sorted array of $n$ elements and $a_n$, which we append to the already sorted array.
+We then use Adamsort to sort the resultant array.
+There are two main cases:
+\begin{enumerate}
+\item If $a_n$ is greater than all of the other elements, then the array is already sorted.
+\item If there exists an element $a_i$ with minimal index $i$ such that $a_i > a_n$, then the elements $a_i$ and $a_n$ will switch positions.
+\end{enumerate}
+These cases are checked continually until the algorithm converges.
+
+\problem{}
+
+\subproblema{}
+
+\textbf{(Pascal's Identity).}
+The \textbf{binomial coefficient} is written \[\binom{n}{k}:=\frac{n!}{k!(n-k)!}\] (\verb|\binom{n}{k}|) and is the coefficient on $x^k$ of the expansion of the binomial $(1+x)^n$.
+It is also the number of ways to choose $k$ elements from a set with $n$ elements.
+Prove that \[\binom{n}{k}=\binom{n-1}{k}+\binom{n-1}{k-1}\]
+[Hint: no need to use induction here, just verify using computation.]
+\hrule
+We proceed by using the definition of a binary coefficient (which was provided), a lot of algebraic manipulation, and occasionally using the fact that $n! = n \pars{n-1}!$.
+
+\begin{align*}
+  \binom{n-1}{k} + \binom{n-1}{k-1} &= \frac{\pars{n-1}!}{k! \pars{n-1-k}!} + \frac{\pars{n-1}!}{\pars{k-1}! \pars{n-k}!} \\
+                                    &= \frac{\pars{n-1}!}{k \pars{k-1}! \pars{n-1-k}!} + \frac{\pars{n-1}!}{\pars{k-1}! \pars{n-k}!} \\
+                                    &= \frac{\pars{n-1}!}{k \pars{k-1}! \pars{n-1-k}!} + \frac{\pars{n-1}!}{\pars{n-k}\pars{k-1}! \pars{n-1-k}!} \\
+                                    &= \frac{\pars{n-1}!}{\pars{k-1}! \pars{n-1-k}!} \pars{\frac{1}{k} + \frac{1}{n-k}} \\
+                                    &= \frac{\pars{n-1}!}{\pars{k-1}! \pars{n-1-k}!} \pars{\frac{n}{\pars{n-k} \pars{k}}} \\
+                                    &= \frac{\pars{n \pars{n-1}!}}{\pars{k \pars{k-1}!} \pars{\pars{n-k}\pars{n-1-k}!}} \\
+                                    &= \frac{n!}{k! \pars{n-k}!} \\
+                                    &= \binom{n}{k} \\
+\end{align*}
+
+\subproblemat{}
+
+\textbf{(Leibniz Rule).}
+$\dagger$ Suppose $f$ and $g$ are differentiable functions.
+We know from high school calculus the product rule: \[(fg)'=f'g+fg'\]
+Prove using induction the following Leibniz Rule: \[(fg)^{(n)}= \sum_{k=0}^n \binom{n}{k}f^{(n-k)}g^{(k)}\]
+Here $f^{(n)}$ denotes the $n$th derivative of $f$, with the convention that $f^{(0)}=f$.
+[Hint: use part (a).]
+
+\hrule
+
+We proceed using induction.
+For the $n=1$ case, we have that $\pars{fg}' = f'g + g'f$, which is consistent with the product rule.
+
+We then assume that statement is true for the $n$th derivative and prove it for the $n+1$th derivative.
+The $n+1$th derivative of $fg$ can be written as, using the product rule,
+
+\begin{align*}
+  \pars{fg}^{\pars{n+1}} &= \pars{\pars{fg}^{\pars{n}}}' \\
+                         &= \pars{\sum \limits_{k=0}^n \binom{n}{k}f^{(n-k)}g^{(k)}} ' \\
+                         &= \sum \limits_{k=0}^n \binom{n}{k} f^{\pars{n-k+1}} g^{\pars{k}} + \sum \limits_{k=0}^n \binom{n}{k} f^{\pars{n-k}} g^{\pars{k+1}}
+\end{align*}
+
+From here, we alter the indices $k$ to move us towards Pascal's identity.
+The second term's index can be altered to be more amenable to Pascal's identity by scaling $k$ up 1 in the bounds of summation and scaling $k$ down 1 in the summand, as follows,
+$$
+\sum \limits_{k=0}^n \binom{n}{k} f^{\pars{n-k+1}} g^{\pars{k}} + \sum \limits_{k=1}^{n+1} \binom{n}{k-1} f^{\pars{n-k+1}} g^{\pars{k}}
+$$
+
+We then consider the first term ($k=0$) of the first sum and the last term ($k=n+1$) of the second sum individually to be able to factor out the resultant.
+
+\begin{align*}
+  \sum \limits_{k=0}^n \binom{n}{k} f^{\pars{n-k+1}} g^{\pars{k}} + \sum \limits_{k=1}^{n+1} \binom{n}{k-1} f^{\pars{n-k+1}} g^{\pars{k}} &= \binom{n}{0} f^{\pars{n+1}} g^{\pars{0}} + \binom{n}{n} f^{\pars{0}} g^{\pars{n+1}} + \sum \limits_{k=1}^n \binom{n}{k} f^{\pars{n-k+1}} g^{\pars{k}} \\
+                                                                                                                                          &+ \sum \limits_{k=1}^{n} \binom{n}{k-1} f^{\pars{n-k+1}} g^{\pars{k}}
+\end{align*}
+
+This is a very long and complicated expression, but we can simplify it a lot.
+We first focus on the sums only and note that they have the same product of derivatives and summation bounds.
+This makes it possible to combine them and distribute out their common factors.
+We can then combine the binomial coefficients using Pascal's identity.
+
+\begin{align*}
+  \sum \limits_{k=1}^n \binom{n}{k} f^{\pars{n-k+1}} g^{\pars{k}} + \sum \limits_{k=1}^{n} \binom{n}{k-1} f^{\pars{n-k+1}} g^{\pars{k}} &= \sum \limits_{k=1}^{n} f^{\pars{n-k+1}} g^{\pars{k}} \pars{\binom{n}{k} + \binom{n}{k-1}} \\
+  &= \sum \limits_{k=1}^{n} f^{\pars{n-k+1}} g^{\pars{k}} \binom{n+1}{k} \\
+\end{align*}
+
+Combining this with the indiviual terms yields,
+
+$$
+  \binom{n}{0} f^{\pars{n+1}} g + \binom{n}{n} f g^{\pars{n+1}} + \sum \limits_{k=1}^{n} \binom{n+1}{k} f^{\pars{n-k+1}} g^{\pars{k}}
+$$
+
+We can then incorporate the individual terms into the sum, by extending the bounds by 1 both ways, resulting in
+
+$$
+\sum \limits_{k=0}^{n+1} \binom{n+1}{k} f^{\pars{n-k+1}} g^{\pars{k}} 
+$$
+
+\end{document}
