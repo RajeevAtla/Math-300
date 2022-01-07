@@ -1,0 +1,166 @@
+\documentclass{article}
+\usepackage[sans, stdmargin, noindent]{../rajeev}
+
+\begin{document}
+
+\problem{}
+
+Consider $\brak{5}=\set{1,2,\dots,5}$.
+Give an example of, or show that such a request impossible, a nonempty relation on $\brak{5}$ that is:
+
+
+
+\subproblema{}
+not symmetric, but reflexive and transitive.
+\hrule
+
+We present the following relation:
+$\sim = \set{\pars{a, b} |\ a \text{ divides } b \text{ and } a, b \in \brak{5}}$.
+
+This is not symmetric because if $a$ divides $b$, then it is not necessarily true that $b$ divides $a$.
+This is reflexive because every integer divides itself.
+
+If $a$ divides $b$, then $a$ must be a factor of $b$.
+Similarly, if $b$ divides $c$, then $b$, which has $a$ as a factor, is a factor of $c$.
+Therefore, $a$ is a factor of $c$, so $a$ divides $c$.
+This means the relation is transitive.
+
+\subproblema{}
+not transitive, but reflexive and symmetric.
+\hrule
+
+We present the following relation:
+$\sim = \set{\pars{a, b} |\, \abs{a-b} \leq 1}$.
+
+This is reflexive because $ \abs{a-a} = 0 \leq 1$.
+This is symmetric because $ \abs{a-b} = \abs{b-a}$, so if $\abs{a-b} \leq 1$, then $\abs{b-a} \leq 1$.
+
+Suppose we have some $a, b, c \in \brak{5}$.
+If $a \sim b$, then $a \in \set{b + 1, b, b - 1}$.
+If $b \sim c$, then $b \in \set{c + 1, c, c - 1}$.
+This means that $a \in \set{c+2, c+1, c, c-1, c-2}$.
+This means that $a$ and $c$ may satisfy the relation, but they don't have to.
+Therefore, the relation isn't transitive.
+
+
+\subproblema{}
+not reflexive, but symmetric and transitive.
+\hrule
+
+Such a relation isn't possible, and we proceed by proof by contradiction.
+Suppose such a relation could be found, and denote it by $\sim$.
+Since the relation is symmetric, if $x \sim y$, then $y \sim x$.
+Since the relation is transitive, $x \sim y$ and $y \sim x$ implies $x \sim x$.
+However, the relation isn't reflexive, so this is a contradiction.
+Therefore, such a relation can't exist.
+
+\subproblema{}
+both symmetric and antisymmetric.
+\hrule
+
+Consider the following relation: $\sim = \set{\pars{a, b} |\, a = b}$.
+
+This is symmetric because if $a \sim b$, then $a = b$, so therefore $b \sim a$.
+Moreover, this is antisymmetric, because for all $a \neq b$, the relation isn't true from either side, as explicitly defined in its construction.
+
+\problem{}
+Determine if each of the following relation on a set A is an equivalence relation or not.
+If so, exhibit the equivalence classes.
+Justify each answer.
+
+\subproblema{}
+$A=\mathbb{R}^2$, $(a,b) R(c,d)$ if $a^2+b^2=c^2+d^2$
+\hrule
+
+Pick some $\pars{a, b}$, $\pars{c, d}$, and $\pars{e, f}$ in $\RR$.
+$a^2 + b^2 = a^2 + b^2$, so the relation is reflexive.
+Moreover, if $a^2 + b^2 = c^2 + d^2$, then $c^2 + d^2 = a^2 + b^2$, so the relation is symmetric.
+If $a^2 + b^2 = c^2 + d^2$ and $c^2 + d^2 = e^2 + f^2$, then $a^2 + b^2 = e^2 + f^2$, so the relation is transitive.
+Since the relation is reflexive, symmetric, and transitive, the relation is an equivalence relation.
+
+This relation can be thought of as the set of points in $\RR^2$ that form a circle with a center at $\pars{0, 0}$.
+Therefore, the equivalence classes can be written in the form of $\set{ \pars{x, y} | x^2 + y^2 = k^2}$, where $k \in \RR$.
+
+\subproblema{}
+
+$A = \QQ, R = \varnothing$ the empty relation.
+\hrule
+
+Under this relation, no two rational numbers are related.
+Therefore, the relation is symmetric, reflexive, and transitive by vacuous proof.
+
+There are no resulting equivalence classes because the relation does not relate any rational numbers at all.
+
+\problem{}
+
+Prove or disprove the converse of Proposition 6.9: that is, a partition $\mathcal{A}$ on $A$ induces an equivalence relation on $A$ by $x\sim y$ if and only if there exists some $B\in\mathcal{A}$ such that $B$ contains both $x$ and $y$.
+
+\hrule
+Suppose that $B = \mathcal{A}_a$, so that for all $x \in B$, $x \sim a$.
+By the transitive property, which $\sim$ obeys since it is an equivalence relation, if $y$ is also in $B$, then $x \sim y$.
+
+
+\problem{}
+Consider the relation $D\coloneqq \{(a,b)\in \mathbb{N}\times \mathbb{N}\mid a\text{ divides }b\}$. Show that $D$ is a partial ordering.
+\hrule
+
+Any number divides itself so $D$ is reflexive.
+If $a$ divides $b$, then $a$ must be a factor of $b$.
+Similarly, if $b$ divides $c$, then $b$, which has $a$ as a factor, is a factor of $c$.
+Therefore, $a$ is a factor of $c$, so $a$ divides $c$.
+This means the relation is transitive.
+If $a$ divides $b$, then that does not necessarily mean that $b$ divides $a$.
+Therefore, the relation is anti-symmetric.
+Since the relation is reflexive, anti-symmetric, and transitive, it is a partial ordering.
+
+
+\problem{}
+
+This problem will deal with what we call a total ordering.
+
+
+\textbf{Definition 6.16.}
+A \textbf{total ordering} or a \textbf{linear ordering} is a partial ordering such that any two elements are comparable; that is, for any $a$ and $b$, either $a \prec b$ or $b \prec a$. 
+
+Suppose $A$ and $B$ are two sets, with total orderings $\prec_A$ and $\prec_B$ respectively.
+Define 
+\[
+    \prec_L\, := \{((a, b), (c, d)) \mid (a \neq c \land a \prec_A c) \lor (a = c \land b \prec_B d) \},
+\]
+and
+\[
+    \prec_P\, := \{((a, b), (c, d)) \mid a \prec_A c \land b \prec_B d \}.
+\]
+
+\textbf{Note 6.17.}
+$\prec_L$ is known as the lexicographic ordering, and $\prec_P$ is known as the product ordering.
+
+\subproblema{}
+Describe in your own words how $\prec_L$ and $\prec_P$ work.
+\hrule
+
+The lexicographic ordering first compares the first value in the pair if they are not equal.
+Otherwise, it compares the second value in the pair.
+
+The product ordering checks both coordinates and only works if both of them are less than their counterparts.
+
+\subproblema{}
+Show that $\prec_P$ is a partial ordering.
+\hrule
+
+Since both $\prec_A$ and $\prec_A$ are partial orderings, both are anti-symmetric, reflexive, and transitive.
+Therefore $\prec_P$ is also anti-symmetric, reflexive, and transitive because it is the logical disjunction of two partial orderings.
+This makes it also a partial ordering.
+
+\subproblema{}
+Show that $\prec_P \subseteq \prec_L$.
+\hrule
+
+Consider an arbitrary element $x = \pars{\pars{a, b}, \pars{c, d}} \in \prec_P$.
+Since this element is a member of $\prec_P$, $a \prec_A c$ and $a \prec_B b$.
+Because of this, $x$ also satisfies the criteria to be an element of $\prec_L$.
+Since both the lexicographic and product orderings are defined over the same space, $x$ is also in $\prec_L$.
+This works for any arbitrary element, so $\prec_P \subseteq \prec_L$.
+
+
+\end{document}
