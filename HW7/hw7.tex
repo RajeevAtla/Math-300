@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage[sans, stdmargin, noindent]{../rajeev}
+
+\begin{document}
+
+
+\problem{}
+Let $A = \set{1, 2}, B = \set{x, y}$. List all functions from $A \to B$ that are:
+
+\subproblema{}
+injections;
+\hrule
+
+By the definition of an injection, each element of $B$ may have at most $1$ element of $A$ that maps to it.
+The possible functions are then,
+
+\begin{align*}
+  & \set{\pars{1, x}, \pars{2, y}} \\
+  & \set{\pars{2, x}, \pars{1, y}} \\
+\end{align*}
+
+\subproblema{}
+surjections;
+\hrule
+
+By the definition of a surjection, each element of $B$ must be mapped to by an element of $A$ at least once.
+The possible functions are then,
+
+\begin{align*}
+  & \set{\pars{1, x}, \pars{2, y}} \\
+  & \set{\pars{2, x}, \pars{1, y}} \\
+\end{align*}
+
+
+\subproblema{}
+bijections;
+\hrule
+
+A function is only a bijection if it is both an injection and a surjection.
+The possible functions are then,
+
+\begin{align*}
+  & \set{\pars{1, x}, \pars{2, y}} \\
+  & \set{\pars{2, x}, \pars{1, y}} \\
+\end{align*}
+
+\subproblema{}
+none of the above.
+\hrule
+
+The other functions that exist to map these two sets are
+
+\begin{align*}
+  & \set{\pars{1, x}, \pars{2, x}} \\
+  & \set{\pars{1, y}, \pars{2, y}} \\
+\end{align*}
+
+\problem{}
+\subproblema{}
+Supply a proof for Proposition 7.8.
+
+\textbf{Proposition 7.8.}
+If $f : A \to B$ and $g : B \to C$ are both injective, then their composition $g \circ f : A \to C$ is injective.
+
+\hrule
+
+Consider two arbitrary elements $x, y \in A$ such that $g \pars{f \pars{x}} = g \pars{f \pars{y}}$.
+Since $g$ is an injection, this means $f \pars{x} = f \pars{y}$.
+Similarly, since $f$ is also an injection, this means $x = y$.
+This means that $g \circ f$ is also an injection.
+
+\subproblema{}
+Suppose $f:A\to B$ and $g:B\to C$.
+If $g\circ f$ is injective, is it necessarily the case that $f$ is injective?
+Is it necessarily the case that $g$ is injective?
+Prove or disprove your claims.
+
+\hrule
+
+We show that $f$ is necessarily injective.
+Pick some arbitrary $x, y \in A$ such that $f \pars{x} = f \pars{y}$.
+This is equivalent to $g \pars{f \pars{x}} = g \pars{f \pars{x}}$.
+Since $g \circ f$ is injective, this implies that $x= y$.
+Therefore, $f$ is injective.
+
+Note that $g$ doesn't need to be injective we can't go from $g(x) = g(y)$ to $g(f(x)) = g(f(y))$ without changing sets.
+
+\subproblema{}
+
+Repeat part (b) but replace injective with surjective.
+\hrule
+
+We show that $g$ is necessarily surjective.
+Choose $z \in C$.
+We know that there exists $x \in A$ such that $g \circ f \pars{x} = z$ since $g \circ f$ is surjective.
+Define $y := f \pars{x}$.
+Then there exists a $y \in B$ such that $g \pars{y} = z$, so $g$ is surjective.
+
+We can't show the same for $f$ since it is already inside another function, so we can't make the same argument.
+
+\problem{}
+
+Find a function from $\RR$ to $\RR$, and supply a proof of your claim, that is:
+
+\subproblema{}
+
+an injection but not a surjection;
+
+\hrule
+
+Consider $f(x) = e^x$.
+It is an injection because each $x$-value results in a different output.
+It is not a surjection because non-positive real numbers aren't achieved no matter what the value of $x$ is.
+
+\subproblema{}
+
+a surjection but not an injection;
+
+\hrule
+
+Consider $f(x) = x \sin x$.
+This function is a surjection because all real numbers are achieved given a suitable real number $x$.
+However, this function is not an injection because there are $f(x)$-values that are produced by more than one $x$-value.
+
+\subproblema{}
+
+a bijection;
+
+\hrule
+
+Consider $f(x) = x$.
+This function is an injection because each value of $f(x)$ is produced by a distinct $x$-value.
+Similarly, this function is a surjection because all real numbers are achieved given a suitable real number $x$.
+Since the function is both an injection and a surjection, it is a bijection.
+
+\subproblema{}
+
+neither a surjection nor an injection.
+
+\hrule
+
+Consider $f(x) = x^2$.
+This function is not an injection because multiple $x$ values can map to each $f(x)$-value.
+This function is not a surjection because the negative real numbers cannot be achieved for any real $x$.
+
+\problem{}
+Let $f : A \to B$, and let $G_1, G_2 \subseteq A$, and let $H_1, H_2 \subseteq B$.
+\subproblema{}
+Is it true that $f^{-1} \pars{f \pars{G_1}} = G_1$.
+If so, prove it; if not, provide a counterexample, and provide the correct relation between the two sets, and justify your answer.
+\hrule
+The image of $G_1$, $f \pars{G_1}$ will be some subset of $B$, which we denote by $B_1$.
+Unfortunately, we don't know whether or not the function is injective, so the pre-image $f^{-1} \pars{B_1}$ may contain extra elements.
+For a counterexample, consider the function $f \pars{x^2}$ over the subset $\brak{-2, -1}$.
+The final set that is returned will be $\brak{-2, -1} \cup \brak{1, 2}$.
+
+The correct relation is $f^{-1} \pars{f \pars{G_1}} \subseteq G_1$.
+
+\subproblema{}
+Is it true that $f \pars{f^{-1} \pars{H_1}} = H_1$.
+If so, prove it; if not, provide a counterexample, and provide the correct relation between the two sets, and justify your answer.
+\hrule
+
+Let the pre-image of $H_1$ be $A_1$.
+Since $f$ is a function, by definition, each element of $A_1$ is mapped to its appropriate element of $H_1$.
+Therefore, $f \pars{A_1} = H_1$, proving this statement to be true.
+
+\subproblema{}
+As a counterexample, we choose $f \pars{x} = x^2$ and the intervals $ \brak{-1,0}$ and $\brak{0, 1}$.
+
+
+
+\end{document}
