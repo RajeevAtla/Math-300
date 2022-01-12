@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[sans, stdmargin, noindent]{../rajeev}
+
+\begin{document}
+
+
+\problem{}
+There is an error in Lemma 8.7, similar to the last time I pointed out my own error.
+Find it, fix the statement of the lemma, and amend the proof to adapt to this.
+Discuss in Discord.
+
+\hrule
+
+The main error is that the infinite sequence can be made up of empty sequences.
+The proof doesn't account for that, and an additional argument needs to be appended in order for it to make sense.
+
+\problem{}
+
+\subproblema{}
+
+Show that there is no injection from $\brak{n+1}$ to $\brak{n}$ for any integer.
+\hrule
+
+For the sake of notation, let $A = \brak{n+1}$ and $B = \brak{n}$.
+We consider the function $f : A \to B$.
+Since $f$ is a function, it must map all elements of $A$ to some elements in $B$.
+However, each element of $A$ can't map to a distinct element of $B$ because $\abs{A} > \abs{B}$.
+At minimum, two distinct elements $x, y \in A$ map to the same element of $B$.
+Therefore, the function cannot be an injection.
+
+\problem{}
+
+Exhibit a bijection from $\ZZ$ to $\QQ$.
+
+\hrule
+
+Because they are of the same cardinality, there exists a bijection between $\QQ^-$ and $\ZZ^-$.
+Since $\QQ = \QQ^- \cup \QQ^+$ and $\ZZ = \NN \cup \ZZ^- \cup \set{0}$, the cardinality of these two sets are equal, as they are both countably infinite.
+Therefore, there exists a bijection between the two.
+
+\problem{}
+
+Show that if a set $A$ has a bijection to a subset of $\NN$, then it is countable.
+Conclude that if $\abs{A} \leq \abs{\NN}$, then it is countable.
+
+\hrule
+
+Pick some $B \subseteq \NN$ and define the bijection $f : A \to B$.
+Since $f$ is a bijection, $\abs{A} = \abs{B}$.
+Since $B$ is a subset of $\NN$, $\abs{B} \leq \abs{\NN}$.
+Therefore, $A \leq \abs{\NN}$.
+If the cardinality of $A$ is the same as that of $\NN$, then it is countably infinite.
+If it is less than the cardinality of $\NN$, then it is a finite set.
+In either case $A$ is a countable set.
+
+\problem{}
+
+\subproblema{}
+Suppose $A_1, A_2$ are countable sets.
+Show that there is an injection $f : A_1 \times A_2 \to \NN$.
+[Hint: Fundamental theorem of Arithmetic.]
+
+\hrule
+
+For the Cartesian product to be valid, we must have that $\abs{A}_1 = \abs{A}_2$.
+In addition, the cardinality of the Cartesian product is equal to that of its input sets.
+Since both $A_1$ and $A_2$ are countable, $A_1 \times A_2$ will also be countable.
+Therefore, $\abs{A_1 \times A_2} \leq \abs{\NN}$.
+Then, there must exist an injection between $A_1 \times A_2$ and $\NN$.
+
+\subproblema{}
+Generalize to any countable $A_1 \times A_2 \times \dots \times A_n$.
+
+\hrule
+
+The essence of the argument still holds: $\abs{A_1} = \abs{A_2} = \dots = \abs{A_n} = \abs{A_1 \times A_2 \times \dots \times A_n}$.
+This cardinality will then be less than or equal to that of the natural numbers.
+
+\problem{}
+
+\subproblema{}
+Suppose that $\mathcal{A}$ is a countable collection of countably infinite sets.
+That is, there are countably many sets contained in $\mathcal{A}$.
+Show that $\bigcup \limits_{A \in \mathcal{A}} A$ is countable.
+
+\hrule
+
+Since the collection of sets is countable, there is an injection with the natural numbers as a result.
+Let $\mathcal{A}_i$ be the $i$-th element set of $\mathcal{A}$.
+Similarly, let $\mathcal{A}_{ij}$ be the $j$-th element of the $i$-th element set of $\mathcal{A}$.
+We can write out each elements in a sparse $n$-by-$\NN$ grid, where $n \leq \abs{\NN}$.
+Using the results of Problem 5, we know that $\abs{\NN \times \NN} = \abs{\NN}$, so the cardinality of the joint union is therefore less than or equal to that of the natural numbers.
+The joint union is therefore countable.
+
+\subproblema{}
+Deduce that the collection of all finite subsets of $\NN$ is countable.
+Suppose $\NN_k$ is the set of all finite subsets of $\NN$ with cardinality $k$.
+
+
+
+\end{document}
